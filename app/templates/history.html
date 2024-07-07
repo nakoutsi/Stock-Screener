@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Stock History: {{ stock.symbol }}{% endblock %}
+
+{% block content %}
+<h1 class="mt-5">Stock History: {{ stock.symbol }}</h1>
+
+<a href="{{ url_for('index') }}" class="btn btn-secondary mb-3">&larr; Back to Search</a>
+
+<table class="table mt-3">
+  <thead>
+  <tr>
+    <th>Date</th>
+    <th>Open</th>
+    <th>High</th>
+    <th>Low</th>
+    <th>Close</th>
+    <th>Volume</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for record in history %}
+  <tr>
+    <td>{{ record.date }}</td>
+    <td>{{ record.open }}</td>
+    <td>{{ record.high }}</td>
+    <td>{{ record.low }}</td>
+    <td>{{ record.close }}</td>
+    <td>{{ record.volume }}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<a href="{{ url_for('index') }}" class="btn btn-primary mt-3">Go to Homepage</a>
+{% endblock %}

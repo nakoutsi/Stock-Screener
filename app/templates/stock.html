@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Stock Data: {{ stock.symbol }}{% endblock %}
+
+{% block content %}
+<h1 class="mt-5">Stock Data for {{ stock.symbol }}</h1>
+
+<a href="{{ url_for('index') }}" class="btn btn-secondary mb-3">&larr; Back to Search</a>
+
+<table class="table mt-3">
+  <thead>
+  <tr>
+    <th>Time</th>
+    <th>Open</th>
+    <th>High</th>
+    <th>Low</th>
+    <th>Close</th>
+    <th>Volume</th>
+  </tr>
+  </thead>
+  <tbody id="stock-data-body">
+  {% set counter = 0 %}
+  {% for time, values in data['Time Series (1min)'] | dictsort(reverse=True) %}
+  <tr {% if counter >= 5 %} style="display: none;" {% endif %}>
+    <td>{{ time }}</td>
+    <td>{{ values['1. open'] }}</td>
+    <td>{{ values['2. high'] }}</td>
+    <td>{{ values['3. low'] }}</td>
+    <td>{{ values['4. close'] }}</td>
+    <td>{{ values['5. volume'] }}</td>
+  </tr>
+  {% set counter = counter + 1 %}
+  {% endfor %}
+  </tbody>
+</table>
+<button id="toggle-details" class="btn btn-info mt-3">Show More Data</button>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#toggle-details').click(function() {
+      $('#stock-data-body').find('tr:hidden').slice(0, 5).fadeIn();
+      if ($('#stock-data-body').find('tr:hidden').length === 0) {
+        $('#toggle-details').hide();
+      }
+    });
+  });
+</script>
+{% endblock %}

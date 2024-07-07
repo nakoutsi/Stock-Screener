@@ -1,0 +1,13 @@
+<!-- app/templates/index.html -->
+{% extends "base.html" %}
+
+{% block title %}Stock Screener{% endblock %}
+
+{% block content %}
+<h1 class="mt-5">Welcome to the Stock Screener App!</h1>
+<form action="{{ url_for('search') }}" method="POST" class="form-inline mt-3">
+    <label for="symbol" class="mr-2">Enter Stock Symbol:</label>
+    <input type="text" id="symbol" name="symbol" class="form-control mr-2" required>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+{% endblock %}
