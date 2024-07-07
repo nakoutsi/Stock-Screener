@@ -1,4 +1,5 @@
 Stock Screener App
+
 Description
 The Stock Screener App is a web-based application that allows users to search for and view detailed stock data. Users can enter a stock symbol to retrieve real-time data from the Alpha Vantage API, which is then stored in a local SQLite database for quick access. The app provides an intuitive interface to display stock information and history, with the ability to load more data dynamically.
 
