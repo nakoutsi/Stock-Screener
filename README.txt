@@ -23,6 +23,7 @@ Clone the repository:
 bash
 git clone https://github.com/your-username/stock-screener.git
 cd stock-screener
+
 Create a virtual environment and install dependencies:
 
 bash
@@ -31,7 +32,6 @@ source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 pip install -r requirements.txt
 
 Set up the database:
-Copy code
 flask db init
 flask db migrate -m "Initial migration"
 flask db upgrade
@@ -40,6 +40,7 @@ Run the application:
 
 bash
 python run.py
+
 Access the application:
 Open your web browser and navigate to http://127.0.0.1:5000/.
 
